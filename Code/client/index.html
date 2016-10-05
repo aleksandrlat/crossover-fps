@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+        <title>Patient's page</title>
+
+        <link rel="stylesheet" href="/css/index.css">
+        <script src="/socket.io/socket.io.js"></script>
+        <link rel="stylesheet" href="https://js.arcgis.com/4.1/esri/css/main.css">
+
+        <script>
+            window.dojoConfig = {
+                async: true,
+                parseOnLoad: true,
+                deps: ['app/index'],
+                packages: [
+                    {
+                        name: 'react',
+                        location: '/bower_components/react/',
+                        main: 'react'
+                    },
+                    {
+                        name: 'react-router',
+                        location: '/bower_components/react-router/',
+                        main: 'react-router'
+                    },
+                    {
+                        name: 'app',
+                        location: '/dist',
+                        main: 'index'
+                    }
+                ]
+            };
+        </script>
+
+        <script src="https://js.arcgis.com/4.1/"></script>
+    </head>
+
+    <body>
+        <div id="viewDiv"></div>
+        <div id="appDiv">Loading...</div>
+    </body>
+</html>

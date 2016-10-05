@@ -1,0 +1,12 @@
+{
+  "name": "test-app",
+  "version": "0.0.1",
+  "scripts": {
+    "test": "node_modules/.bin/mocha --compilers js:babel-core/register --recursive tests"
+  },
+  "devDependencies": {
+    "babel-core": "^6.17.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.16.0",
+    "mocha": "^3.1.0"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "name": "test-app",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "node ./bin/www",
+    "build": "cd client && \"../node_modules/.bin/gulp\""
+  },
+  "devDependencies": {
+    "babel-cli": "^6.16.0",
+    "babel-plugin-transform-es2015-modules-amd": "^6.8.0",
+    "babel-preset-react": "^6.16.0",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2"
+  },
+  "dependencies": {
+    "babel-register": "^6.16.3",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.16.0",
+    "body-parser": "^1.15.2",
+    "cookie-parser": "^1.4.3",
+    "debug": "^2.2.0",
+    "express": "^4.14.0",
+    "mongodb": "^2.2.10",
+    "morgan": "^1.7.0",
+    "socket.io": "^1.4.8"
+  }
+}
