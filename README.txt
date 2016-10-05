@@ -10,12 +10,12 @@ Requirements.
 Instructions.
 - start mongodb on localhost default port
 - cd to Code folder
-- run nmp install
+- run npm install
 - run npm run build
 - run npm run start
 - navigate to http://localhost:3000/ in browser
 
 To run tests.
 - cd to Tests folder
-- run nmp install
+- run npm install
 - run npm run test
