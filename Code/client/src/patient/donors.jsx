@@ -47,6 +47,18 @@ export default class Donors extends Component {
         return webMercatorUtils.webMercatorToGeographic(this.props.view.extent);
     }
 
+    componentDidMount() {
+        this.rootElement.addEventListener('click', showHidden, false);
+
+        this.props.view.then((view) => {
+            esriRequest("/donors", { query: this.geographicExtent().toJSON() })
+                .then(createGraphics) // then send it to the createGraphics() method
+                .then(this.createLayer.bind(this)) // when graphics are created, create the layer
+                .then(this.subscribeOnDonors.bind(this))
+                .otherwise(errback);
+        });
+    }
+
     componentWillUnmount() {
         this.rootElement.removeEventListener('click', showHidden);
 
@@ -60,17 +72,7 @@ export default class Donors extends Component {
 
     render() {
         document.title = 'Patients\'s page';
-        this.rootElement.addEventListener('click', showHidden, false);
-
-        this.props.view.then((view) => {
-            esriRequest("/donors", { query: this.geographicExtent().toJSON() })
-                .then(createGraphics) // then send it to the createGraphics() method
-                .then(this.createLayer.bind(this)) // when graphics are created, create the layer
-                .then(this.subscribeOnDonors.bind(this))
-                .otherwise(errback);
-        });
-
-        return null;
+        return (<div>Patients's page</div>);
     }
 }
 

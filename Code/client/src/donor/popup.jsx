@@ -22,6 +22,22 @@ export default class DonorPopup extends Component {
         this.actionHandler = null;
     }
 
+    componentDidMount() {
+        let popup = this.props.view.popup;
+
+        this.clickHandler = this.props.view.on("click", show(popup));
+
+        // Adds the action to the view's default popup.
+        popup.actions.push(saveDonorAction);
+
+        this.actionHandler = popup.on("trigger-action", event => {
+            // If the zoom-out action is clicked, the following code executes
+            if (event.action.id === saveDonorAction.id) {
+                saveDonor(popup);
+            }
+        });
+    }
+
     componentWillUnmount() {
         // remove event handlers
         this.clickHandler.remove();
@@ -36,22 +52,7 @@ export default class DonorPopup extends Component {
 
     render() {
         document.title = 'Donor\'s page';
-
-        let popup = this.props.view.popup;
-
-        this.clickHandler = this.props.view.on("click", show(popup));
-
-        // Adds the action to the view's default popup.
-        popup.actions.push(saveDonorAction);
-
-        this.actionHandler = popup.on("trigger-action", event => {
-            // If the zoom-out action is clicked, the following code executes
-            if (event.action.id === saveDonorAction.id) {
-                saveDonor(popup);
-            }
-        });
-
-        return null;
+        return (<div>Donor's page</div>);
     }
 }
 
