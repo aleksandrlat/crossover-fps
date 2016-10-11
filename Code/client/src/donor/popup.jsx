@@ -104,7 +104,7 @@ function template(lat, lon, address) {
         </li>
         <li>
             <label for='contactNumber'>Contact Number</label>
-            <input type='tel' pattern='[\+]\d{2}[\(]\d{2}[\)]\d{4}[\-]\d{4}' title='Contact Number (Format: +99(99)9999-9999)'
+            <input type='tel' pattern='[\\+]\\d{2}[\\(]\\d{2}[\\)]\\d{4}[\\-]\\d{4}' title='Contact Number (Format: +99(99)9999-9999)'
                 name='contactNumber' id='contactNumber' required>
         </li>
         <li>
@@ -126,9 +126,6 @@ function template(lat, lon, address) {
 
 function saveDonor(popup) {
     let form = document.getElementById('donorForm');
-    /*Array.from(form.elements)
-        .filter(el => !el.validity.valid)
-        .forEach(el => el.setCustomValidity(el.title));*/
 
     if (!form.reportValidity()) {
         return;
