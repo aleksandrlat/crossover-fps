@@ -94,23 +94,27 @@ function template(lat, lon, address) {
     <ul>
         <li>
             <label for='firstName'>First Name</label> 
-            <input type='text' name='firstName' id='firstName' required>
+            <input type='text' name='firstName' id='firstName' required
+                title='First Name is required'>
         </li>
         <li>
             <label for='lastName'>Last Name</label> 
-            <input type='text' name='lastName' id='lastName' required>
+            <input type='text' name='lastName' id='lastName' required
+                title='Last Name is required'>
         </li>
         <li>
-            <label for='contactNumber'>Contact Number</label> 
-            <input type='tel' name='contactNumber' id='contactNumber' required>
+            <label for='contactNumber'>Contact Number</label>
+            <input type='tel' pattern='[\+]\d{2}[\(]\d{2}[\)]\d{4}[\-]\d{4}' title='Contact Number (Format: +99(99)9999-9999)'
+                name='contactNumber' id='contactNumber' required>
         </li>
         <li>
             <label for='email'>Email Address</label> 
-            <input type='email' name='email' id='email'>
+            <input type='email' name='email' id='email' required
+                title='Email Address (Format: somename@domain.root)'>
         </li>
         <li>
             <label for='bloodGroup'>Blood Group</label> 
-            <select name='bloodGroup' id='bloodGroup'>
+            <select name='bloodGroup' id='bloodGroup' required title='Blood Group is required'>
                 <option value='1'>1</option>
                 <option value='2'>2</option>
                 <option value='3'>3</option>
@@ -121,7 +125,16 @@ function template(lat, lon, address) {
 }
 
 function saveDonor(popup) {
-    let fd = new FormData(document.getElementById('donorForm'));
+    let form = document.getElementById('donorForm');
+    /*Array.from(form.elements)
+        .filter(el => !el.validity.valid)
+        .forEach(el => el.setCustomValidity(el.title));*/
+
+    if (!form.reportValidity()) {
+        return;
+    }
+
+    let fd = new FormData(form);
     let donor = {};
     for (let [key, value] of fd) {
         donor[key] = value;

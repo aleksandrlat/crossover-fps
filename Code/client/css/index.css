@@ -23,3 +23,8 @@ body,
 #appDiv a {
     color: white;
 }
+
+#donorForm input:invalid,
+#donorForm select:invalid {
+    border: 1px solid red;
+}
